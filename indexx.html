@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoReserve - Location de voiture en ligne</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-car"></i> AutoReserve
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vehicules">Véhicules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-light ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="fas fa-user"></i> Connexion
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-4 fw-bold">Louez la voiture de vos rêves</h1>
+                    <p class="lead">Trouvez le véhicule parfait pour votre prochain voyage</p>
+                    <a href="#reservation" class="btn btn-primary btn-lg mt-3">Réserver maintenant</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Formulaire de réservation -->
+    <section id="reservation" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h2 class="text-center mb-4">Réservez votre véhicule</h2>
+                            <form id="reservationForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="pickupLocation" class="form-label">Lieu de prise en charge</label>
+                                        <select class="form-select" id="pickupLocation" required>
+                                            <option value="" selected disabled>Choisir un lieu</option>
+                                            <option value="Conakry">Conakry - Aéroport Internation Ahmed Sekou Touré</option>
+                                            <option value="Mamou">Mamou - Centre ville</option>
+                                            <option value="Kankan">Kankan - Gare routiére de Kankan</option>
+                                            <option value="Kindia">Kindia - Centre ville</option>
+                                            <option value="Dabola">Dabola - Centre ville</option>
+                                            <option value="Siguiri">Siguiri - Centre ville</option>
+                                            <option value="Pita">Pita - Centre ville</option>
+                                            <option value="Boké">Boké - Centre ville</option>
+                                            <option value="Kamsar">Kamsar - Sangarédi</option>
+                                            <option value="Faranah">Faranah - Centre ville</option>
+                                            <option value="N'Zérékoré">N'Zérékoré - Centre ville</option>
+                                            <option value="Dalaba">Dalaba - Centre ville</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="returnLocation" class="form-label">Lieu de restitution</label>
+                                        <select class="form-select" id="returnLocation" required>
+                                            <option value="" selected disabled>Choisir un lieu</option>
+                                            <option value="" selected disabled>Choisir un lieu</option>
+                                            <option value="Conakry">Conakry - Aéroport Internation Ahmed Sekou Touré</option>
+                                            <option value="Mamou">Mamou - Centre ville</option>
+                                            <option value="Kankan">Kankan - Gare routiére de Kankan</option>
+                                            <option value="Kindia">Kindia - Centre ville</option>
+                                            <option value="Dabola">Dabola - Centre ville</option>
+                                            <option value="Siguiri">Siguiri - Centre ville</option>
+                                            <option value="Pita">Pita - Centre ville</option>
+                                            <option value="Boké">Boké - Centre ville</option>
+                                            <option value="Kamsar">Kamsar - Sangarédi</option>
+                                            <option value="Faranah">Faranah - Centre ville</option>
+                                            <option value="N'Zérékoré">N'Zérékoré - Centre ville</option>
+                                            <option value="Dalaba">Dalaba - Centre ville</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="pickupDate" class="form-label">Date de prise en charge</label>
+                                        <input type="datetime-local" class="form-control" id="pickupDate" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="returnDate" class="form-label">Date de restitution</label>
+                                        <input type="datetime-local" class="form-control" id="returnDate" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="carType" class="form-label">Type de véhicule</label>
+                                        <select class="form-select" id="carType" required>
+                                            <option value="" selected disabled>Choisir un type</option>
+                                            <option value="economique">Économique</option>
+                                            <option value="compacte">Compacte</option>
+                                            <option value="berline">Berline</option>
+                                            <option value="suv">SUV</option>
+                                            <option value="luxe">Luxe</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="driverAge" class="form-label">Âge du conducteur</label>
+                                        <select class="form-select" id="driverAge" required>
+                                            <option value="" selected disabled>Choisir une tranche d'âge</option>
+                                            <option value="18-25">18-25 ans</option>
+                                            <option value="26-30">26-30 ans</option>
+                                            <option value="31-50">31-50 ans</option>
+                                            <option value="51+">51 ans et plus</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Vérifier les disponibilités</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Véhicules disponibles -->
+    <section id="vehicules" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nos véhicules disponibles</h2>
+            <div class="row g-4">
+                <!-- Voiture 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="image/car-4.jpg" class="card-img-top" alt="Voiture compacte">
+                        <div class="card-body">
+                            <h5 class="card-title">Peugeot 208</h5>
+                            <p class="card-text">Voiture compacte idéale pour la ville. Économique et facile à manœuvrer.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-users me-2"></i> 5 places</li>
+                                <li class="list-group-item"><i class="fas fa-gas-pump me-2"></i> Diesel</li>
+                                <li class="list-group-item"><i class="fas fa-cogs me-2"></i> Manuel</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 mb-0">€35/jour</span>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reserveModal" data-car="Peugeot 208">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Voiture 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="image/car-2.jpg" class="card-img-top" alt="Berline">
+                        <div class="card-body">
+                            <h5 class="card-title">Renault Talisman</h5>
+                            <p class="card-text">Berline spacieuse et confortable pour les longs trajets.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-users me-2"></i> 5 places</li>
+                                <li class="list-group-item"><i class="fas fa-gas-pump me-2"></i> Essence</li>
+                                <li class="list-group-item"><i class="fas fa-cogs me-2"></i> Automatique</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 mb-0">€65/jour</span>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reserveModal" data-car="Renault Talisman">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Voiture 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="image/car-3.jpg" class="card-img-top" alt="SUV">
+                        <div class="card-body">
+                            <h5 class="card-title">Peugeot 3008</h5>
+                            <p class="card-text">SUV familial avec grand coffre et conduite élevée pour plus de confort.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-users me-2"></i> 5 places</li>
+                                <li class="list-group-item"><i class="fas fa-gas-pump me-2"></i> Hybride</li>
+                                <li class="list-group-item"><i class="fas fa-cogs me-2"></i> Automatique</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 mb-0">€75/jour</span>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reserveModal" data-car="Peugeot 3008">Réserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">Voir tous nos véhicules</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nos services</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 text-center p-4">
+                        <div class="icon-service mx-auto mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Disponibilité 24/7</h4>
+                        <p>Réservez à tout moment, notre service client est disponible 24 heures sur 24.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 text-center p-4">
+                        <div class="icon-service mx-auto mb-4">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <h4>Meilleur prix garanti</h4>
+                        <p>Nous vous garantissons les meilleurs prix du marché pour votre location.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 text-center p-4">
+                        <div class="icon-service mx-auto mb-4">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Assurance complète</h4>
+                        <p>Tous nos véhicules sont couverts par une assurance tous risques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Ce que nos clients disent</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card testimonial-card">
+                                    <div class="card-body text-center p-4">
+                                        <img src="image/diawara.JPG" class="rounded-circle mb-3" width="80" alt="Client">
+                                        <p class="lead mb-4">"Service exceptionnel ! La voiture était propre, en parfait état et la prise en charge très rapide. Je recommande vivement !"</p>
+                                        <h5 class="mb-1">Morsaidou Diawara</h5>
+                                        <div class="text-warning mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card testimonial-card">
+                                    <div class="card-body text-center p-4">
+                                        <img src="image/sadio.jpg" class="rounded-circle mb-3" width="80" alt="Client">
+                                        <p class="lead mb-4">"Très satisfait de mon expérience avec AutoReserve. Le processus de réservation est simple et le personnel très aimable."</p>
+                                        <h5 class="mb-1">Ahmad Sadio Touré</h5>
+                                        <div class="text-warning mb-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Contactez-nous</h2>
+                    <p>Vous avez des questions ? Notre équipe est là pour vous aider.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> +224 620 78 47 00</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> oumarlefutur@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Matam/Bonfi sur l'autorout Fidel Castro, Conakry</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <form>
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Nom complet</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-black text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 AutoReserve. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Connexion -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Pas encore de compte ? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">S'inscrire</a></p>
+                        <p><a href="#">Mot de passe oublié ?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Inscription -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Créer un compte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nom complet</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="registerPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Confirmer le mot de passe</label>
+                            <input type="password" class="form-control" id="registerConfirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Déjà un compte ? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Se connecter</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Réservation -->
+    <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reserveModalLabel">Confirmer la réservation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Vous êtes sur le point de réserver : <strong id="selectedCar"></strong></p>
+                    <form id="confirmReservationForm">
+                        <div class="mb-3">
+                            <label for="reservationName" class="form-label">Nom complet</label>
+                            <input type="text" class="form-control" id="reservationName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reservationEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="reservationEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reservationPhone" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="reservationPhone" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">J'accepte les conditions générales de location</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Confirmer la réservation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript personnalisé -->
+    <script src="script.js"></script>
+</body>
+</html>
